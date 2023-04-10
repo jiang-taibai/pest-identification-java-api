@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjds.mapper.InsectImagesMapper">
+    <select id="updateSpeciesId">
+        UPDATE insect_images
+        SET species_id = #{newSpeciesId}
+        WHERE species_id = #{oldSpeciesId}
+    </select>
+
+    <update id="changeImageType">
+        UPDATE insect_images
+        SET img_type = #{newImgType}
+        WHERE species_id = #{speciesId}
+          AND img_path = #{imgPath};
+    </update>
+
+    <delete id="deleteImageByImgPath">
+        DELETE
+        FROM insect_images
+        WHERE img_path = #{imgPath};
+    </delete>
+</mapper>
